@@ -18,7 +18,7 @@
 
 https://github.com/asahi-commons/cursor_project_management_demo_original.git
 
-![テンプレートのコピー方法](template_copy.png)
+![テンプレートのコピー方法](0.Reference/template_copy.png)
 
 ---
 
@@ -28,7 +28,7 @@ https://github.com/asahi-commons/cursor_project_management_demo_original.git
 
 コピー後、Cursorで今回のGitプロジェクトを保存するフォルダを選択。
 
-![フォルダを開く方法](open_folder.png)
+![フォルダを開く方法](0.Reference/open_folder.png)
 
 ---
 
@@ -45,7 +45,7 @@ https://github.com/asahi-commons/cursor_project_management_demo_original.git
 git clone https://github.com/asahi-commons/cursor-project-management-demo-${user name}
 ```
 
-![ターミナルの操作方法](terminal.png)
+![ターミナルの操作方法](0.Reference/terminal.png)
 
 ---
 
@@ -158,7 +158,7 @@ git checkout -b feat/project-plannning
 （画像は各要素が重ならないように配置して欲しい。）
 ```
 
-![コメントの追加方法](add_single_comment.png)
+![コメントの追加方法](0.Reference/add_single_comment.png)
 
 ---
 
