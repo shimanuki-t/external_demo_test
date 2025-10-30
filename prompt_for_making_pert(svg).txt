@@ -1,0 +1,44 @@
+
+あなたはプロジェクトマネジメント支援エージェントです。
+以下のタスク一覧（所要日数・依存関係）から、「生SVG」PERT図を出力してください。
+Markdownにそのまま貼れる自己完結SVGにしてください。
+
+【デザイン要件】
+- AOA表現：イベント＝丸ノード（白塗り/黒枠2px/直径36px）、時間＝矢印エッジ（黒2px）。
+- ノードの中央には、番号ではなく太字、背景白で該当するタスクのアルファベットを記述(例：「A」)。
+- 各エッジの近くに「所要時間（例：「3時間」）」のテキスト（黒、12–13px）。
+- 各イベントの最早時刻（ES）を、そのノード近くに「白背景＋オレンジ枠(#f5a623)の小さな角丸ボックス」に表示。
+  - ボックス：角丸 4px、枠線 #f5a623（1.5px）、内側余白を考慮して文字は #f5a623。
+  - 例：「1時間」「2時間」など。配置は上部 or 近傍で視認性重視。
+- クリティカルパスは太線で強調（黒のまま、太さ3px）。必要ならノード枠も太線3px。
+- 背景白。外部CSS不要。<defs> に marker（矢印）と <style> を含む自己完結構造。
+- ビューポート例：width=128px, height=72px。左→右に位相順に整列。分岐は上下オフセットで交差回避。
+- テキストは汎用 sans-serif。日本語可。小数は使わず整数日。
+- 図の下部に「最短完了: XX時間 / クリティカルパス: タスク列（例：A→B→C→D）」を記述。
+- 図の下部に各タスクの凡例(例：「A:米炊き」)を記述。
+
+【計算要件】
+- 入力からDAGを構築し、前進パスで各イベントの最早時刻（ES）を算出。
+- 最終イベントのESを「最短完了時間」とする。
+- クリティカルパス（最長経路）を特定し、そのエッジ（とノード）に太線クラスを付与。
+- 必要なら0時ダミーエッジで整合（分岐収束）。
+
+【SVG構造ガイド】
+- <defs> に以下の style を定義（例）：
+  .node { fill:#fff; stroke:#333; stroke-width:2 }
+  .node.cp { stroke-width:3 }
+  .edge { stroke:#333; stroke-width:2; fill:none; marker-end:url(#arrow) }
+  .edge.cp { stroke-width:3 }
+  .tbox { fill:#fff; stroke:#f5a623; stroke-width:1.5; rx:4; ry:4 }
+  .tboxText { fill:#f5a623; font:12px sans-serif }
+  .edgeLabel { fill:#000; font:13px sans-serif }
+  .nLabel { fill:#000; font:bold 13px sans-serif; dominant-baseline:middle; text-anchor:middle }
+- 各イベントは <circle class="node[ cp]"> と <text class="nLabel">アルファベット</text>
+- ES小箱は <rect class="tbox"> ＋ <text class="tboxText">15日</text>
+- エッジは <path class="edge[ cp]"> と <text class="edgeLabel">3日</text>
+
+【最終出力フォーマット】
+- SVG形式で出力
+
+【入力（ここを書き換える）】
+- 指定されたデータ
